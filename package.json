@@ -14,7 +14,8 @@
   "dependencies": {
     "gatsby": "^2.1.5",
     "react": "^16.8.2",
-    "react-dom": "^16.8.2"
+    "react-dom": "^16.8.2",
+    "tone": "^13.4.9"
   },
   "repository": {
     "type": "git",
