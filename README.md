@@ -4,7 +4,7 @@
   </a>
 </p>
 <h1 align="center">
-  Bragi
+  Bloink
 </h1>
 
 A generative music app.
