@@ -26,7 +26,7 @@ class Welcome extends React.Component {
         return (
 
                 <div className="main-page-content">
-                    <h1>Bragi</h1>
+                    <h1>Bloink</h1>
                     <button className="btn" onClick={this.playNoise}>
                         Click
                     </button>
