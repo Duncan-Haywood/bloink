@@ -6,7 +6,9 @@ class StepSequencer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sequencerSlots: [0,0,0,0,0,0,0,0,0,0,0,0]
+            sequencerSlots: [0,0,0,0,0,0,0,0,0,0,0,0],
+            noteLetters: ["C","C#","D","D#","E","E#","F","F#","A","A#","B"],
+            activeStep: null
         };
     }
 
@@ -14,29 +16,31 @@ class StepSequencer extends React.Component {
         this.props.onButtonClick(this.props.note);
     }
 
-    playSequence() {
-        
-        const synth = new Tone.synth();
-        synth.oscillator.type = 'sawtooth';
+    playSequence = () => {
+
+        var synth = new Tone.FMSynth();
+        synth.oscillator.type = 'triangle';
         synth.toMaster();
 
-        const rows = document.body.querySelectorAll('.row');
+        const $rows = document.querySelectorAll('.row');
+        console.log($rows);
         let index = 0;
 
         Tone.Transport.scheduleRepeat(repeat, '8n');
         Tone.Transport.start();
 
-        function repeat(time) {
+        function repeat (time) {
 
             let step = index % 12;
 
-            for(let i = 0; i < rows.length; i++) {
-                const input = rows.querySelectorAll(`.col:nth-child(${step + 1})`);
-                if(input.getAttribute("on") === "1") {
-                    synth.triggerAttackRelease('C4', '8n', time);
+            for(let i = 0; i < $rows.length; i++) {
+                const input = document.querySelectorAll(`.col:nth-child(${step + 1})`);
+                var noteLetters = ["C","C#","D","D#","E","E#","F","F#","A","A#","B"];
+                if(input[0].getAttribute("on") === "1") {
+                    var randomNoteLetter = noteLetters[Math.floor(Math.random() * 10)]; 
+                    synth.triggerAttackRelease(randomNoteLetter+'4', '8n', time);
                 }
             }
-
             index++;
         }
     }
@@ -59,7 +63,9 @@ class StepSequencer extends React.Component {
                     <div className="col" on={value} key={index} onClick={() => this.toggleSequencerSlot(index)}></div>
                     )}
                 </div>
-                <button onClick={this.playSequence}>Play</button>
+                <div className="step-sequencer-toggle-wrapper">
+                    <button className="step-sequencer-toggle" onClick={this.playSequence}>Play</button>
+                </div>
             </div>
         );
     }
