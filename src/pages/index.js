@@ -2,6 +2,7 @@ import React from "react"
 import Tone from "tone";
 
 import NoteKey from '../components/NoteKey';
+import StepSequencer from '../components/StepSequencer';
 
 class Welcome extends React.Component {
 
@@ -27,8 +28,7 @@ class Welcome extends React.Component {
         return (
 
                 <div className="main-page-content">
-                    <h1>Bloink</h1>
-                    <div className="note-wrapper">
+                <div className="note-wrapper">
                         <NoteKey note="C3" onButtonClick={this.playNoise}></NoteKey>
                         <NoteKey note="D3" onButtonClick={this.playNoise}></NoteKey>
                         <NoteKey blacknote='true' note="D#3" onButtonClick={this.playNoise}></NoteKey>
@@ -50,6 +50,8 @@ class Welcome extends React.Component {
                         <NoteKey note="B4" onButtonClick={this.playNoise}></NoteKey>
                         <NoteKey note="C5" onButtonClick={this.playNoise}></NoteKey>
                     </div>
+                    <h1>Bloink</h1>
+                    <StepSequencer></StepSequencer>
                 </div>
 
         );
