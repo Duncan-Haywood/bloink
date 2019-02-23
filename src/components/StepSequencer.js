@@ -8,7 +8,8 @@ class StepSequencer extends React.Component {
         this.state = {
             sequencerSlots: [0,0,0,0,0,0,0,0,0,0,0,0],
             noteLetters: ["C","C#","D","D#","E","E#","F","F#","A","A#","B"],
-            activeStep: null
+            activeStep: 0,
+            transportState: "stopped"
         };
     }
 
@@ -27,7 +28,9 @@ class StepSequencer extends React.Component {
         let index = 0;
 
         Tone.Transport.scheduleRepeat(repeat, '8n');
-        Tone.Transport.start();
+        Tone.Transport.toggle();
+        this.setState({transportState: Tone.Transport.state});
+
 
         function repeat (time) {
 
@@ -35,6 +38,9 @@ class StepSequencer extends React.Component {
 
             for(let i = 0; i < $rows.length; i++) {
                 const input = document.querySelectorAll(`.col:nth-child(${step + 1})`);
+                console.log(step + 1);
+                // this.setState({activeStep: step + 1});
+        
                 var noteLetters = ["C","C#","D","D#","E","E#","F","F#","A","A#","B"];
                 if(input[0].getAttribute("on") === "1") {
                     var randomNoteLetter = noteLetters[Math.floor(Math.random() * 10)]; 
@@ -60,11 +66,11 @@ class StepSequencer extends React.Component {
             <div className="step-sequencer-wrapper">
                 <div className="row">
                     {this.state.sequencerSlots.map((value, index) => 
-                    <div className="col" on={value} key={index} onClick={() => this.toggleSequencerSlot(index)}></div>
+                    <div className="col" on={value} key={index} onClick={() => this.toggleSequencerSlot(index)}>{index}</div>
                     )}
                 </div>
                 <div className="step-sequencer-toggle-wrapper">
-                    <button className="step-sequencer-toggle" onClick={this.playSequence}>Play</button>
+                    <button className="step-sequencer-toggle" onClick={this.playSequence}>{this.state.transportState === 'stopped' ? 'Go' : 'No'}</button>
                 </div>
             </div>
         );
