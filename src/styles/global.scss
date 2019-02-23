@@ -80,7 +80,7 @@ body {
 				background-color: orange;
 			}
 			&.active-step {
-				background: red;
+				background: lighten(#10226d, 40%);
 			}
 		}
 	}

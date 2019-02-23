@@ -24,10 +24,9 @@ class StepSequencer extends React.Component {
         synth.toMaster();
 
         const $rows = document.querySelectorAll('.row');
-        console.log($rows);
         let index = 0;
 
-        Tone.Transport.scheduleRepeat(repeat, '8n');
+        Tone.Transport.scheduleRepeat(repeat.bind(this), '8n');
         Tone.Transport.toggle();
         this.setState({transportState: Tone.Transport.state});
 
@@ -38,9 +37,8 @@ class StepSequencer extends React.Component {
 
             for(let i = 0; i < $rows.length; i++) {
                 const input = document.querySelectorAll(`.col:nth-child(${step + 1})`);
-                console.log(step + 1);
-                // this.setState({activeStep: step + 1});
-        
+                this.setState({activeStep: step + 1});
+
                 var noteLetters = ["C","C#","D","D#","E","E#","F","F#","A","A#","B"];
                 if(input[0].getAttribute("on") === "1") {
                     var randomNoteLetter = noteLetters[Math.floor(Math.random() * 10)]; 
@@ -66,7 +64,7 @@ class StepSequencer extends React.Component {
             <div className="step-sequencer-wrapper">
                 <div className="row">
                     {this.state.sequencerSlots.map((value, index) => 
-                    <div className="col" on={value} key={index} onClick={() => this.toggleSequencerSlot(index)}>{index}</div>
+                    <div  className={this.state.activeStep === index ? ' col active-step' : 'col'} on={value} key={index} onClick={() => this.toggleSequencerSlot(index)}>{index}</div>
                     )}
                 </div>
                 <div className="step-sequencer-toggle-wrapper">
