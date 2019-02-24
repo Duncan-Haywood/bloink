@@ -3,8 +3,10 @@
     <!-- <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" /> -->
   </a>
 </p>
-<h1 align="center">
-  Bloink
-</h1>
 
-A generative music app.
+#Bloink
+
+##A Noise Sequencer
+
+
+

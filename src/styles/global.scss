@@ -16,7 +16,7 @@ body {
 	 -1px 1px 0 #ffffff,
 	  1px 1px 0 #ffffff;
 	color: #10226d; 
-	background-image: url(../images/brandon-erlinger-ford-1338829-unsplash.jpg);
+	background-image: url(../images/kai-oberhauser-66770-unsplash.jpg);
 	background-size: cover;
 }
 
@@ -116,7 +116,7 @@ h1 {
 	font-size: 2rem;
 	transition: all 0.3s ease-in-out;
 	&:focus {
-		outline: #ffffff auto 5px;
+		outline: transparent auto 5px;
 	}
 	&.step-sequencer-playing {
 		clip-path: polygon(16% 0, 75% 0%, 100% 50%, 75% 100%, 16% 100%);
