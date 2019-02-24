@@ -1,5 +1,6 @@
 body {
-    font-family: Comfortaa;
+	font-family: Comfortaa;
+	margin: 0;
 }
 
 .main-page-content {
@@ -8,15 +9,21 @@ body {
     justify-content: center;
     flex-direction: column;
     height: 100vh;
-    font-size: 80px;
-	background: linear-gradient(to right, #FFFFFF 0%, #10226d 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	font-size: 80px;
+	text-shadow:
+	-1px -1px 0 #ffffff,  
+	 1px -1px 0 #ffffff,
+	 -1px 1px 0 #ffffff,
+	  1px 1px 0 #ffffff;
+	color: #10226d; 
+	background-image: url(../images/brandon-erlinger-ford-1338829-unsplash.jpg);
+	background-size: cover;
 }
 
 h1 {
 	margin-bottom: 0;
 	margin-top: 0;
+	color: linear-gradient(to right, #FFFFFF 0%, #10226d 100%);
 }
 
 .note-wrapper {
