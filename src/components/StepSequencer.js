@@ -68,7 +68,7 @@ class StepSequencer extends React.Component {
                     )}
                 </div>
                 <div className="step-sequencer-toggle-wrapper">
-                    <button className="step-sequencer-toggle" onClick={this.playSequence}>{this.state.transportState === 'stopped' ? 'Go' : 'No'}</button>
+                    <button className={this.state.transportState === 'stopped' ? "step-sequencer-toggle step-sequencer-stopped" : "step-sequencer-toggle step-sequencer-playing"  } onClick={this.playSequence}>{this.state.transportState === 'stopped' ? 'Go' : 'No'}</button>
                 </div>
             </div>
         );
