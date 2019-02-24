@@ -35,7 +35,7 @@ class StepSequencer extends React.Component {
 
             let step = index % 12;
 
-            for(let i = 0; i < $rows.length; i++) {
+            for(let i = 0; i <= $rows.length; i++) {
                 const input = document.querySelectorAll(`.col:nth-child(${step + 1})`);
                 this.setState({activeStep: step + 1});
 
@@ -64,7 +64,7 @@ class StepSequencer extends React.Component {
             <div className="step-sequencer-wrapper">
                 <div className="row">
                     {this.state.sequencerSlots.map((value, index) => 
-                    <div  className={this.state.activeStep === index ? ' col active-step' : 'col'} on={value} key={index} onClick={() => this.toggleSequencerSlot(index)}>{index}</div>
+                    <div  className={this.state.activeStep === index+1 ? ' col active-step' : 'col'} on={value} key={index+1} onClick={() => this.toggleSequencerSlot(index)}>{index+1}</div>
                     )}
                 </div>
                 <div className="step-sequencer-toggle-wrapper">
