@@ -1,10 +1,10 @@
-#Bloink
+# Bloink
 
-##A Noise Sequencer
+## A Noise Sequencer
 
 Made using Gatsby, React and Tone.js
 
-##Setup
+## Setup
 
 1. Clone the repo
 2. Run npm install
