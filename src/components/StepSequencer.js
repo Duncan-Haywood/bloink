@@ -8,7 +8,7 @@ class StepSequencer extends React.Component {
         this.state = {
             sequencerSlots: [0,0,0,0,0,0,0,0,0,0,0,0],
             noteLetters: ["C","C#","D","D#","E","E#","F","F#","A","A#","B"],
-            activeStep: 0,
+            activeStep: 1,
             transportState: "stopped"
         };
     }
@@ -17,11 +17,13 @@ class StepSequencer extends React.Component {
         this.props.onButtonClick(this.props.note);
     }
 
-    playSequence = () => {
+    playSequence = () => { 
 
-        this.setState({activeStep: 0});
+        let index = null;
 
-        const synth = new Tone.Synth({
+        this.setState({activeStep: 1});
+
+        let synth = new Tone.Synth({
             oscillator: {
               type: 'fmsquare',
               modulationType: 'sawtooth',
@@ -37,18 +39,22 @@ class StepSequencer extends React.Component {
           }).toMaster()
 
         const $rows = document.querySelectorAll('.row');
-        let index = 0;
 
         Tone.Transport.scheduleRepeat(repeat.bind(this), '8n');
         Tone.Transport.toggle();
         this.setState({transportState: Tone.Transport.state});
 
+        index = 0;
+        console.log("Setting index to 0");
+
 
         function repeat (time) {
 
-            let step = index % 12;
+            console.log("This", this);
+            console.log("Index", index, time);
 
-            for(let i = 0; i <= $rows.length; i++) {
+            let step = index % 12;
+                console.log("Step", step);
                 const input = document.querySelectorAll(`.col:nth-child(${step + 1})`);
                 this.setState({activeStep: step + 1});
 
@@ -57,7 +63,6 @@ class StepSequencer extends React.Component {
                     var randomNoteLetter = noteLetters[Math.floor(Math.random() * 10)]; 
                     synth.triggerAttackRelease(randomNoteLetter+'4', '8n', time);
                 }
-            }
             index++;
         }
     }
