@@ -2,6 +2,7 @@ import React from "react"
 import Tone from "tone";
 
 import StepSequencer from '../components/StepSequencer';
+import Stepper from '../components/Stepper';
 
 class Welcome extends React.Component {
 
@@ -29,6 +30,7 @@ class Welcome extends React.Component {
                 <div className="main-page-content">
                     <h1>Bloink</h1>
                     <StepSequencer></StepSequencer>
+                    <Stepper></Stepper>
                 </div>
 
         );
